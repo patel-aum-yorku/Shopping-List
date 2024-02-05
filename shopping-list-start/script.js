@@ -80,6 +80,33 @@ const clearItem = () => {
 }
 
 /**
+ * This fucntion filters the list according to input in the filter field
+ * on the UI.
+ */
+
+const filterList = (e) => {
+    // grabbing neccessary information from the elements
+    //const filterInput = itemFilter.value.toLowerCase();
+    const filterInput = e.target.value.toLowerCase();
+    const items = itemList.querySelectorAll('li');
+    
+    // this loop will check if the string in the input is part of any
+    // existing list items
+    items.forEach((item)=>{
+        // the first child of the li tag is text node (name of item) and
+        // then we use text content to grab the string 
+        const itemText = item.firstChild.textContent.toLowerCase();
+
+        //if (itemText.indexOf(filterInput) != -1)
+        if(itemText.includes(filterInput)){
+            item.style.display = 'flex';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+
+/**
  * This fucntion checks if the shopping list is empty or not
  * then proceeds to hide the filter input and clear all button.
  */
@@ -94,10 +121,12 @@ const checkUI = () => {
     }
 }
 
+
+
 //event listeners
 itemForm.addEventListener('submit',addItem);
 itemList.addEventListener('click',removeItem);
 clearBtn.addEventListener('click',clearItem);
-
+itemFilter.addEventListener('input',filterList);
 // this fucntion checks when load the page
 checkUI();
