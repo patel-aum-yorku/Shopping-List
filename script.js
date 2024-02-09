@@ -17,12 +17,12 @@ const displayItems = () => {
 
 
 /**
- * This fucntion add items to the list.
+ * This function add items to the list.
  * @param {*} e 
  */
 const onAddItemSubmit = (e) => {
     e.preventDefault();
-    newItem = itemInput.value;
+    let newItem = itemInput.value;
     // validate input
     if(newItem === ''){
         alert('Please add an item');
@@ -114,7 +114,7 @@ const addItemToStorage = (item) => {
 
 /**
  * 
- * @returns This function returns an array contianing list items from the
+ * @returns This function returns an array containing list items from the
  * list.
  */
 const getItemsFromStorage = () => {
@@ -131,7 +131,7 @@ const getItemsFromStorage = () => {
 
 /**
  * Handles click event on items from the list like remove item, etc.
- * @param {} event 
+ * @param event
  */
 const onclickItem = (event) => {
     if (event.target.parentElement.classList.contains('remove-item')){
@@ -169,7 +169,7 @@ const setItemToEdit = (item) =>{
 /**
  * This function removes the item from the list when the remove 
  * button is clicked.
- * @param {*} event 
+ * @param item
  */
 const removeItem = (item) =>{
     // remove item from dom
@@ -191,7 +191,7 @@ const removeItemFromStorage = (item) => {
     localStorage.setItem('items',JSON.stringify(itemsFromStorage));
 }
 /**
- * This funciton clears the list on click of the clear button.
+ * This function clears the list on click of the clear button.
  */
 const clearItem = () => {
     //clear from DOM
@@ -209,12 +209,12 @@ const clearItem = () => {
 }
 
 /**
- * This fucntion filters the list according to input in the filter field
+ * This function filters the list according to input in the filter field
  * on the UI.
  */
 
 const filterList = (e) => {
-    // grabbing neccessary information from the elements
+    // grabbing necessary information from the elements
     //const filterInput = itemFilter.value.toLowerCase();
     const filterInput = e.target.value.toLowerCase();
     const items = itemList.querySelectorAll('li');
@@ -236,7 +236,7 @@ const filterList = (e) => {
 }
 
 /**
- * This fucntion checks if the shopping list is empty or not
+ * This function checks if the shopping list is empty or not
  * then proceeds to hide the filter input and clear all button.
  */
 const checkUI = () => {
@@ -265,7 +265,7 @@ itemList.addEventListener('click',onclickItem);
 clearBtn.addEventListener('click',clearItem);
 itemFilter.addEventListener('input',filterList);
 document.addEventListener('DOMContentLoaded',displayItems);
-// this fucntion checks when load the page
+// this function checks when load the page
 checkUI();
 }
 
